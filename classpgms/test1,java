@@ -1,0 +1,95 @@
+
+package test;
+
+import java.util.Scanner;
+
+class advertisement{
+	int adv_id;
+	String client_name;
+	String start_date;
+	
+	advertisement(){
+	}
+	advertisement(String client_name){
+		this.client_name = client_name;
+	}
+}
+
+class commercial_add extends advertisement{
+	float size_of_ad;
+	float price_of_ad_per_cm;
+	
+	commercial_add(){
+		System.out.println("This is an commerical ad.");
+	}
+	
+	commercial_add(String client_name){
+		super(client_name);
+	}
+	
+	void read() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter advertisement id : ");
+		adv_id = sc.nextInt();
+		System.out.println("Enter start date of ad : ");
+		start_date = sc.next();
+		System.out.println("Enter size of ad : ");
+		size_of_ad = sc.nextFloat();
+		System.out.println("Enter price of ad per cm : ");
+		price_of_ad_per_cm = sc.nextFloat();
+	}
+	
+	void display(){
+		System.out.println("Ad id : " + adv_id);
+		System.out.println("Client name is  : " + client_name);
+		System.out.println("Start date is: " + start_date);
+		System.out.println("Size of ad is : " + size_of_ad);
+		System.out.println("Price of ad per cm is : " + price_of_ad_per_cm);
+		System.out.println("Total price of ad : " + size_of_ad * price_of_ad_per_cm);
+	}
+}
+
+class free_add extends advertisement{
+	int free_ad_time_duration;
+	
+	free_add(){
+		System.out.println("This is an free ad.");
+	}
+	
+	free_add(String client_name){
+		super(client_name);
+	}
+	
+	void read() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter advertisement id : ");
+		adv_id = sc.nextInt();
+//		System.out.println("Enter Client name : ");
+//		client_name = sc.nextLine();
+		System.out.print("Enter start date of ad : ");
+		start_date = sc.next();
+		System.out.print("Enter free ad time duration : ");
+		free_ad_time_duration = sc.nextInt();
+		sc.close();
+	}
+	
+	void display(){
+		System.out.println("Ad id : " + adv_id);
+		System.out.println("Client name is  : " + client_name);
+		System.out.println("Start date is: " + start_date);
+		System.out.println("Free ad time duration is : " + free_ad_time_duration);
+	}
+	
+}
+
+public class test1 {
+	public static void main(String[] args) {
+		commercial_add ca = new commercial_add("Client 1");
+		free_add fa = new free_add("Client 2");
+		
+		ca.read();
+		ca.display();
+		fa.read();
+		fa.display();
+	}
+}
